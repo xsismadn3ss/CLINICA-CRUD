@@ -1,76 +1,84 @@
 ﻿@model CLINICA_CRUD.Models.RegistroMedico
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 
-@{
-    ViewData["Title"] = "Create";
+@if (SignInManager.IsSignedIn(User))
+{
+
+    <h1>Create</h1>
+
+    <h4>RegistroMedico</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="IdPaciente" class="control-label"></label>
+                    <input asp-for="IdPaciente" class="form-control" />
+                    <span asp-validation-for="IdPaciente" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="IdDiscapacidad" class="control-label"></label>
+                    <input asp-for="IdDiscapacidad" class="form-control" />
+                    <span asp-validation-for="IdDiscapacidad" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="IdAlergia" class="control-label"></label>
+                    <input asp-for="IdAlergia" class="form-control" />
+                    <span asp-validation-for="IdAlergia" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="IdEnfermedad" class="control-label"></label>
+                    <input asp-for="IdEnfermedad" class="form-control" />
+                    <span asp-validation-for="IdEnfermedad" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="IdTratamiento" class="control-label"></label>
+                    <input asp-for="IdTratamiento" class="form-control" />
+                    <span asp-validation-for="IdTratamiento" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="IdAlergiaNavigationId" class="control-label"></label>
+                    <select asp-for="IdAlergiaNavigationId" class ="form-control" asp-items="ViewBag.IdAlergiaNavigationId"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="IdDiscapacidadNavigationId" class="control-label"></label>
+                    <select asp-for="IdDiscapacidadNavigationId" class ="form-control" asp-items="ViewBag.IdDiscapacidadNavigationId"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="IdEnfermedadNavigationId" class="control-label"></label>
+                    <select asp-for="IdEnfermedadNavigationId" class ="form-control" asp-items="ViewBag.IdEnfermedadNavigationId"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="IdPacienteNavigationId" class="control-label"></label>
+                    <select asp-for="IdPacienteNavigationId" class ="form-control" asp-items="ViewBag.IdPacienteNavigationId"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="IdTratamientoNavigationId" class="control-label"></label>
+                    <select asp-for="IdTratamientoNavigationId" class ="form-control" asp-items="ViewBag.IdTratamientoNavigationId"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CitasId" class="control-label"></label>
+                    <select asp-for="CitasId" class ="form-control" asp-items="ViewBag.CitasId"></select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
 }
 
-<h1>Create</h1>
-
-<h4>RegistroMedico</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="IdPaciente" class="control-label"></label>
-                <input asp-for="IdPaciente" class="form-control" />
-                <span asp-validation-for="IdPaciente" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="IdDiscapacidad" class="control-label"></label>
-                <input asp-for="IdDiscapacidad" class="form-control" />
-                <span asp-validation-for="IdDiscapacidad" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="IdAlergia" class="control-label"></label>
-                <input asp-for="IdAlergia" class="form-control" />
-                <span asp-validation-for="IdAlergia" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="IdEnfermedad" class="control-label"></label>
-                <input asp-for="IdEnfermedad" class="form-control" />
-                <span asp-validation-for="IdEnfermedad" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="IdTratamiento" class="control-label"></label>
-                <input asp-for="IdTratamiento" class="form-control" />
-                <span asp-validation-for="IdTratamiento" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="IdAlergiaNavigationId" class="control-label"></label>
-                <select asp-for="IdAlergiaNavigationId" class ="form-control" asp-items="ViewBag.IdAlergiaNavigationId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="IdDiscapacidadNavigationId" class="control-label"></label>
-                <select asp-for="IdDiscapacidadNavigationId" class ="form-control" asp-items="ViewBag.IdDiscapacidadNavigationId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="IdEnfermedadNavigationId" class="control-label"></label>
-                <select asp-for="IdEnfermedadNavigationId" class ="form-control" asp-items="ViewBag.IdEnfermedadNavigationId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="IdPacienteNavigationId" class="control-label"></label>
-                <select asp-for="IdPacienteNavigationId" class ="form-control" asp-items="ViewBag.IdPacienteNavigationId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="IdTratamientoNavigationId" class="control-label"></label>
-                <select asp-for="IdTratamientoNavigationId" class ="form-control" asp-items="ViewBag.IdTratamientoNavigationId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="CitasId" class="control-label"></label>
-                <select asp-for="CitasId" class ="form-control" asp-items="ViewBag.CitasId"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+else
+{
+    <h1 class="mensaje">Por favor ingrese sesión</h1>
+}
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

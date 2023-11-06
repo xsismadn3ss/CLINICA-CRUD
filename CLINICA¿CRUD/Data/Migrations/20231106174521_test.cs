@@ -65,7 +65,7 @@ namespace CLINICA_CRUD.Data.Migrations
                     table.PrimaryKey("PK_Enfermedad", x => x.Id);
                 });
 
-            migrationBuilder.CreateTable(
+            /*migrationBuilder.CreateTable(
                 name: "Paciente",
                 columns: table => new
                 {
@@ -83,7 +83,7 @@ namespace CLINICA_CRUD.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Paciente", x => x.Id);
-                });
+                });*/
 
             migrationBuilder.CreateTable(
                 name: "Tratamiento",
